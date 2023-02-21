@@ -17,3 +17,19 @@
   font-family: 'Pacifico', cursive;
   font-size: 50px;
 }
+
+.resy-container {
+  width: 90vw;
+}
+
+.card {
+  background-color: white;
+  border: 5px solid teal;
+  color: teal;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+}
