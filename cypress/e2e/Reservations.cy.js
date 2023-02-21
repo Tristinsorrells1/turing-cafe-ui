@@ -57,4 +57,14 @@ describe("Reservation App", () => {
       "Number of guests: 2"
     );
   });
+
+  it("Should show the user what they type into an input", () => {
+    cy.get("input[name='name']").type("Tristin").should('have.value', "Tristin")
+    cy.get("input[name='date']").type("5/5").should("have.value", "5/5")
+    cy.get("input[name='time']").type("2:30").should("have.value", "2:30")
+    cy.get("input[name='guests']").type("4").should("have.value", "4");
+  })
+
+
+
 });
