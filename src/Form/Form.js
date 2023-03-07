@@ -1,72 +1,65 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class Form extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: "",
-      date: "",
-      time: "",
-      guests: "",
-      number: "",
-    };
-  }
+const Form = ({addReservation}) => {
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+    const [name, setName] = useState("")
+    const [date, setDate] = useState("")
+    const [time, setTime] = useState("")
+    const [number, setNumber] = useState("")
+  
 
-  createReservation = (event) => {
+  let createReservation = (event) => {
     event.preventDefault();
     let reservation = {
-      name: this.state.name,
-      date: this.state.date,
-      time: this.state.time,
-      number: Number(this.state.guests),
+      id: Date.now(),
+      name: name,
+      date: date,
+      time: time,
+      number: Number(number),
     };
-    this.props.addReservation(reservation);
+    addReservation(reservation);
   };
 
-  render() {
+ 
     return (
       <form>
         <input
           type="text"
           placeholder="Name"
           name="name"
-          value={this.state.name}
-          onChange={(event) => this.handleChange(event)}
+          value={name}
+          onChange={(event) => setName(event.target.value)}
         />
         <input
           type="text"
           placeholder="Date (mm/dd)"
           name="date"
-          value={this.state.date}
-          onChange={(event) => this.handleChange(event)}
+          value={date}
+          onChange={(event) => setDate(event.target.value)}
         />
         <input
           type="text"
           placeholder="Time"
           name="time"
-          value={this.state.time}
-          onChange={(event) => this.handleChange(event)}
+          value={time}
+          onChange={(event) => setTime(event.target.value)}
         />
         <input
           type="number"
           placeholder="Number of guests"
           name="guests"
-          value={this.state.guests}
-          onChange={(event) => this.handleChange(event)}
+          value={number}
+          onChange={(event) => setNumber(event.target.value)}
         />
         <button
           className="submit"
-          onClick={(event) => this.createReservation(event)}
+          onClick={(event) => createReservation(event)}
         >
           Make Reservation
         </button>
       </form>
     );
   }
-}
+
 
 export default Form;
