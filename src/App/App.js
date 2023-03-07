@@ -23,7 +23,7 @@ const App = () => {
       .then((response) => {
         if (response.ok) {
           response.json();
-          console.log(response)
+          console.log("Posted!", response)
           fetchReservations()
           .then((data) => setReservations( data))
         }
